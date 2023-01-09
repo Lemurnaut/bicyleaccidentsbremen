@@ -58,9 +58,6 @@ def download_data():
 
 dataframe_source = download_data()
 
-st.write(dataframe_source)
-
-
 @st.cache
 def proceed_data(*,remove_outliers: bool, fill_outliers_with_mean: bool, fill_missing_index: bool, fill_missing_values_with_mean: bool):
     import pandas as pd
