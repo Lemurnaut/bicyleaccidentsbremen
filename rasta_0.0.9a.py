@@ -65,17 +65,11 @@ st.write(dataframe_source)
 def proceed_data(*,remove_outliers: bool, fill_outliers_with_mean: bool, fill_missing_index: bool, fill_missing_values_with_mean: bool):
     import pandas as pd
     
-    dataframe = dataframe_source
 
-
-
-
-
-   
-    column_names = dataframe.columns.tolist()
+    column_names = dataframe_source.columns.tolist()
     dataframe_list = []
     for i in column_names:
-        dataframe_list.append(pd.DataFrame(dataframe[i]))
+        dataframe_list.append(pd.DataFrame(dataframe_source[i]))
 
     dataframe_proceed = []
     for dataframe in dataframe_list:
