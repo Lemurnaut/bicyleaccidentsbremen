@@ -983,7 +983,7 @@ if switch_graph_menue == 'Tagesverlauf Wochentage (Detail)':
         st.write(f'vom {dataframe_first_monday} bis zum {dataframe_last_sunday} zwischen {dataframe_starttime} Uhr und {dataframe_endtime} Uhr')
   
         st.write(fig)
-        with stexpander('Zeige Daten'):
+        with st.expander('Zeige Daten'):
             st.write(dataframe.loc[dataframe_first_monday : dataframe_last_sunday].between_time(dataframe_starttime, dataframe_endtime))
 
 if switch_graph_menue == 'Saison-Trend-Zerlegung':
