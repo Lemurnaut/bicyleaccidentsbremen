@@ -241,7 +241,7 @@ def map(dataframe):
         tooltip=tooltip,
         map_provider='mapbox',
         map_style='mapbox://styles/mapbox/light-v11',
-        api_keys={'mapbox': st.secrets['MAPBOX_KEY']
+        api_keys={'mapbox': st.secrets['MAPBOX_KEY']},
         #map_style='mapbox://styles/mapbox/navigation-night-v1',
         #api_keys={'mapbox': 'pk.eyJ1Ijoid2FzaTAwNyIsImEiOiJja2lobmFvcjQwOW56MnNtbDc4aTAwcTB5In0.wnT9dpy3BaeDXA7UegN0ng'}
     )
