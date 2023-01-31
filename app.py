@@ -224,11 +224,11 @@ def accident_categorie(dataframe, selected_accident_cat):
     '''
     if selected_accident_cat == 'Unfall mit Getöteten':
         dataframe = dataframe.loc[dataframe['UKATEGORIE'] == 1]
-    if selected_accident_cat == 'Unfall mit Schwerverletzten':
+    elif selected_accident_cat == 'Unfall mit Schwerverletzten':
         dataframe = dataframe.loc[dataframe['UKATEGORIE'] == 2]
-    if selected_accident_cat == 'Unfall mit Leichtverletzten':
+    elif selected_accident_cat == 'Unfall mit Leichtverletzten':
         dataframe = dataframe.loc[dataframe['UKATEGORIE'] == 3]
-    if selected_accident_cat == 'Alle Unfallkategorien':
+    elif selected_accident_cat == 'Alle Unfallkategorien':
         pass
     return dataframe
 
@@ -257,8 +257,8 @@ def accident_type(dataframe, selected_accident_type):
 
     if accident_type != 11:
         dataframe = dataframe.loc[dataframe['UART'] == accident_type]
-    if accident_type == 11:
-        dataframe = dataframe
+    elif accident_type == 11:
+        pass
 
     return dataframe
 
@@ -284,8 +284,8 @@ def accident_type_1(dataframe, selected_accident_type_1):
 
     if accident_type_1 != 0:
         dataframe = dataframe.loc[dataframe['UTYP1'] == accident_type_1]
-    if accident_type_1 == 0:
-        dataframe = dataframe
+    elif accident_type_1 == 0:
+        pass
 
     return dataframe
 
@@ -300,8 +300,8 @@ def daylight(dataframe, daylight_type):
     '''
     if daylight_type != 3:
         dataframe = dataframe.loc[dataframe['ULICHTVERH'] == daylight_type]
-    if daylight_type == 3:
-        dataframe = dataframe
+    elif daylight_type == 3:
+        pass
 
     return (dataframe)
 
@@ -341,12 +341,12 @@ def select_district(dataframe, selected_city, selected_district):
             dataframe = dataframe.loc[dataframe['UKREIS'] == 11]
             dataframe = dataframe.loc[dataframe['Stadtteil'] == selected_district]
 
-        if selected_city == 'Bremerhaven':
+        elif selected_city == 'Bremerhaven':
             dataframe = dataframe.loc[dataframe['UKREIS'] == 12]
             dataframe = dataframe.loc[dataframe['Stadtteil'] == selected_district]
 
-    if selected_district == 'Alle Stadtteile':
-        dataframe = dataframe
+    elif selected_district == 'Alle Stadtteile':
+        pass
     return dataframe
 
 
@@ -358,8 +358,8 @@ def select_local_district(dataframe, selected_local_district):
     if selected_local_district != 'Alle Ortsteile':
         dataframe = dataframe.loc[dataframe['Ortsteil'] == selected_local_district]
 
-    if selected_local_district == 'Alle Ortsteile':
-        dataframe = dataframe
+    elif selected_local_district == 'Alle Ortsteile':
+        pass
     return dataframe
 
 
@@ -414,6 +414,8 @@ def select_analysis_type():
             st.markdown(appdocumentation.dataproc)
         with st.expander('Verarbeitung Geodaten'):
             st.write(appdocumentation.geoproc)
+        st.write('Datenquelle Unfalldaten: https://unfallatlas.statistikportal.de/_opendata2022.html, '
+                 'Lizenz: dl-de/by-2-0 | www.govdata.de/dl-de/by-2-0')
 
 
 # def if 'Diagramme' is selected from sidebar 'Typ' dropdown
@@ -495,8 +497,7 @@ st.set_page_config(layout="wide",
                    menu_items=menu_items
                    )
 
-
-st.header('Fahrradunfälle Bremen')
+st.header('Fahrradunfälle in Bremen')
 
 col1, col2, col3 = st.columns(3)
 
@@ -517,4 +518,3 @@ selected_district = dropdown_district(dataframe)
 selected_local_district = dropdown_local_district(dataframe, selected_district)
 
 select_analysis_type()
-

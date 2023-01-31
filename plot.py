@@ -231,8 +231,18 @@ def map(dataframe):
         pickable=True)
 
     tooltip = {
-        "html": "<b>Beteiligung</b><br>Pkw: {IstPKW}<br>Fuss: {IstFuss}<br>Krad: {IstKrad}<br>Lkw: {IstGkfz}<br>sonstige: {IstSonstig}<br><b>Kategorie:{UKATEGORIE}</b><br><b>Position</b><br>Lon: {longitude}<br>Lat: {latitude}<br>",
-        "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+        'html': '<b>Beteiligung</b>'
+                '<br>Pkw: {IstPKW}'
+                '<br>Fuss: {IstFuss}'
+                '<br>Krad: {IstKrad}'
+                '<br>Lkw: {IstGkfz}'
+                '<br>sonstige: {IstSonstig}'
+                '<br><b>Kategorie:{UKATEGORIE}</b>'
+                '<br><b>Position</b>'
+                '<br>Lon: {longitude}'
+                '<br>Lat: {latitude}<br>'
+                '<br>Zeit: {UMONAT}/{UJAHR}',
+        'style': {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
     }
 
     map = pydeck.Deck(
@@ -243,7 +253,6 @@ def map(dataframe):
         map_style='mapbox://styles/mapbox/light-v11',
         api_keys={'mapbox': st.secrets['MAPBOX_KEY']},
         #map_style='mapbox://styles/mapbox/navigation-night-v1',
-        #api_keys={'mapbox': 'pk.eyJ1Ijoid2FzaTAwNyIsImEiOiJja2lobmFvcjQwOW56MnNtbDc4aTAwcTB5In0.wnT9dpy3BaeDXA7UegN0ng'}
     )
 
     return map
