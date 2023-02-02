@@ -390,7 +390,7 @@ def maps(dataframe):
     fig = plot.map(dataframe)
     st.pydeck_chart(fig, use_container_width=True)
 
-    st.write(len(dataframe))
+    st.write(f'In der Karte angezeigte Unfälle: {len(dataframe)}')
     with st.expander('Daten'):
         st.dataframe(dataframe)
 
