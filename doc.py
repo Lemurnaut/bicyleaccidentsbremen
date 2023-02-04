@@ -1,6 +1,7 @@
 info = 'Es werden ausschließlich Unfälle mit Fahrradbeteiligung angezeigt (IstRad = 1). Sofern eine Eingrenzung der ' \
-       'Unfallbeteiligung auf Fahrrad über einen Filter möglich ist, werden die Unfälle angezeigt an denen ' \
-       'ausschließlich ein oder mehrere Fahrräder beteiligt waren. Die Daten lassen keine Aussage über die ' \
+       'Unfallbeteiligung auf Fahrrad über einen Filter möglich ist, werden ausschließlich die Unfälle angezeigt ' \
+       'an denen ein oder mehrere Fahrräder ohne Beteiligung Dritter beteiligt waren. ' \
+       'Die Daten lassen keine Aussage über die ' \
        'Anzahl der Unfallbeteiligten zu. Die Ortsteile Borgfeld, Blockland, Seehausen und Strom überschneiden sich' \
        'mit keinem Stadtteil, sie werden in der Stadtteilliste unter Unbekannt geführt. Drei Unfälle an der ' \
        'Stuhrer Landstraße und der Varreler Landstraße sind keinem Ortsteil zugeordnet, sie liegen außerhalb der ' \
