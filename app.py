@@ -478,22 +478,6 @@ def diagramme(dataframe):
             st.dataframe(dataframe_to_show)
 
 
-    if selected_district == 'Alle Stadtteile':
-        st.header('Unfälle in Stadtteilen')
-        fig, dataframe_to_show = plot.districts(dataframe)
-        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
-
-        with st.expander('Daten'):
-            st.dataframe(dataframe_to_show)
-
-    if selected_local_district == 'Alle Ortsteile':
-        st.header('Unfälle in Ortsteilen')
-        fig, dataframe_to_show = plot.local_districts(dataframe)
-        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
-
-        with st.expander('Daten'):
-            st.dataframe(dataframe_to_show)
-
     st.header('Unfälle nach Zeit')
     tab1, tab2, tab3 = st.tabs(['Monat', 'Woche', 'Stunde'])
     with tab1:
@@ -514,6 +498,22 @@ def diagramme(dataframe):
     with tab3:
         st.write('Unfälle nach Stunde')
         fig, dataframe_to_show = plot.hour(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    if selected_district == 'Alle Stadtteile':
+        st.header('Unfälle in Stadtteilen')
+        fig, dataframe_to_show = plot.districts(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    if selected_local_district == 'Alle Ortsteile':
+        st.header('Unfälle in Ortsteilen')
+        fig, dataframe_to_show = plot.local_districts(dataframe)
         st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
         with st.expander('Daten'):

@@ -20,7 +20,7 @@ def unfallbeteiligung(dataframe):
     dataframe = pd.DataFrame.from_dict(data, orient='index')
     dataframe = dataframe.rename(columns={0 : 'Anzahl'})
 
-    fig = px.bar(dataframe, x=dataframe.index, y=dataframe[dataframe.columns[0]].values)
+    fig = px.bar(dataframe, x=dataframe.index, y=dataframe[dataframe.columns[0]].values, text=dataframe[dataframe.columns[0]].values)
 
     fig.update_layout(xaxis_title='Unfallbeteiligung', yaxis_title='Anzahl', height= HEIGHT)
 
@@ -43,8 +43,9 @@ def local_districts(dataframe):
     for name in district_names:
         value_list.append(len(dataframe.loc[dataframe['Ortsteil'] == name]))
     tmp_df['Anzahl'] = value_list
+    tmp_df = tmp_df.set_index('Ortsteil')
 
-    fig = px.bar(tmp_df, x=tmp_df.Ortsteil, y=tmp_df.Anzahl.values, height= HEIGHT)
+    fig = px.bar(tmp_df, x=tmp_df.index, y=tmp_df.Anzahl.values, height=HEIGHT, text=tmp_df.Anzahl.values)
 
     fig.update_layout(xaxis_title='Ortsteil', yaxis_title='Anzahl')
 
@@ -61,7 +62,7 @@ def month(dataframe):
     by_month_sum = by_month_sum.rename(columns={
         'IstPKW': 'Pkw', 'IstFuss': 'Fußgänger', 'IstKrad': 'Krad', 'IstGkfz': 'Lkw', 'IstSonstig': 'Sontiges'})
 
-    fig = px.bar(by_month_sum, x=by_month_sum.index, y=by_month_sum.columns.values, height= HEIGHT)
+    fig = px.bar(by_month_sum, x=by_month_sum.index, y=by_month_sum.columns.values, height=HEIGHT, text_auto=True)
 
     fig.update_layout(xaxis_title='Monat',
                       yaxis_title='Anzahl')
@@ -85,7 +86,7 @@ def week(dataframe):
     by_week_sum = by_week_sum.rename(columns={
         'IstPKW': 'Pkw', 'IstFuss': 'Fußgänger', 'IstKrad': 'Krad', 'IstGkfz': 'Lkw', 'IstSonstig': 'Sonstiges'})
 
-    fig = px.bar(by_week_sum, x=by_week_sum.index, y=by_week_sum.columns.values, height= HEIGHT)
+    fig = px.bar(by_week_sum, x=by_week_sum.index, y=by_week_sum.columns.values, height= HEIGHT, text_auto=True)
 
     fig.update_layout(xaxis_title='Wochentag',
                       yaxis_title='Anzahl')
@@ -109,7 +110,7 @@ def hour(dataframe):
     by_hour_sum = by_hour_sum.rename(columns={
         'IstPKW': 'Pkw', 'IstFuss': 'Fußgänger', 'IstKrad': 'Krad', 'IstGkfz': 'Lkw', 'IstSonstig': 'Sonstiges'})
 
-    fig = px.bar(by_hour_sum, x=by_hour_sum.index, y=by_hour_sum.columns.values, height= HEIGHT)
+    fig = px.bar(by_hour_sum, x=by_hour_sum.index, y=by_hour_sum.columns.values, height= HEIGHT, text_auto=True)
 
     fig.update_layout(xaxis_title='Stunde',
                       yaxis_title='Anzahl')
@@ -170,8 +171,9 @@ def districts(dataframe):
     for name in district_names:
         value_list.append(len(dataframe.loc[dataframe['Stadtteil'] == name]))
     tmp_df['Anzahl'] = value_list
+    tmp_df = tmp_df.set_index('Stadtteil')
 
-    fig = px.bar(tmp_df, x=tmp_df.Stadtteil, y=tmp_df.Anzahl.values, height= HEIGHT)
+    fig = px.bar(tmp_df, x=tmp_df.index, y=tmp_df.Anzahl.values, height= HEIGHT, text=tmp_df.Anzahl.values)
 
     fig.update_layout(xaxis_title='Stadtteil', yaxis_title='Anzahl')
 
@@ -191,9 +193,12 @@ def accidentKat(dataframe):
     dataframe = pd.DataFrame.from_dict(kat_data, orient='index')
     dataframe = dataframe.rename(columns={0 : 'Anzahl'})
 
-    fig = px.bar(dataframe, x=dataframe.index, y=dataframe[dataframe.columns[0]].values)
+    fig = px.bar(dataframe, x=dataframe.index, y=dataframe[dataframe.columns[0]].values, text=dataframe[dataframe.columns[0]].values)
 
-    fig.update_layout(xaxis_title='Unfallbeteiligung', yaxis_title='Anzahl', height= HEIGHT)
+    fig.update_layout(xaxis_title='Unfallbeteiligung',
+                      yaxis_title='Anzahl',
+                      height=HEIGHT,
+                      )
 
     fig.update_traces(hovertemplate='Unfallverletzungen: %{x}<br>' +
                                         'Anzahl: %{y}<br>'
@@ -218,8 +223,9 @@ def accidentArt(dataframe):
 
     dataframe = pd.DataFrame(art_data)
     dataframe = dataframe.rename(columns={0 : 'Merkmal', 1 : 'Anzahl'})
+    dataframe = dataframe.set_index('Merkmal')
 
-    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.Merkmal)
+    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.index, text=dataframe.Anzahl)
 
     fig.update_layout(xaxis_title='Anzahl', yaxis_title='Merkmal', height= HEIGHT)
 
@@ -243,8 +249,9 @@ def accidentType(dataframe):
 
     dataframe = pd.DataFrame(typ_data)
     dataframe = dataframe.rename(columns={0 : 'Merkmal', 1 : 'Anzahl'})
+    dataframe = dataframe.set_index('Merkmal')
 
-    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.Merkmal)
+    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.index, text=dataframe.Anzahl)
 
     fig.update_layout(xaxis_title='Anzahl', yaxis_title='Merkmal', height= HEIGHT)
 
@@ -264,8 +271,9 @@ def light_conditions(dataframe):
 
     dataframe = pd.DataFrame(light_data)
     dataframe = dataframe.rename(columns={0 : 'Merkmal', 1 : 'Anzahl'})
+    dataframe = dataframe.set_index('Merkmal')
 
-    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.Merkmal)
+    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.index, text=dataframe.Anzahl)
 
     fig.update_layout(xaxis_title='Anzahl', yaxis_title='Merkmal', height= HEIGHT)
 
@@ -285,8 +293,9 @@ def street_conditions(dataframe):
 
     dataframe = pd.DataFrame(condition_data)
     dataframe = dataframe.rename(columns={0 : 'Merkmal', 1 : 'Anzahl'})
+    dataframe = dataframe.set_index('Merkmal')
 
-    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.Merkmal)
+    fig = px.bar(dataframe, x=dataframe.Anzahl, y=dataframe.index, text=dataframe.Anzahl)
 
     fig.update_layout(xaxis_title='Anzahl', yaxis_title='Merkmal', height= HEIGHT)
 
