@@ -422,19 +422,61 @@ def select_analysis_type():
 def diagramme(dataframe):
     dataframe = get_dataframe(dataframe)
 
-    st.header('Unfallbeteiligung Fahrrad mit')
-    fig, dataframe_to_show = plot.unfallbeteiligung(dataframe)
-    st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+    st.header('Unfallbeteiligung')
+    tab1, tab2 = st.tabs(['Absolut', 'Relativ'])
+    with tab1:
+        fig, dataframe_to_show = plot.unfallbeteiligung(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
-    with st.expander('Daten'):
-        st.dataframe(dataframe_to_show)
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
 
-    st.header('Anteile Unfallbeteiligter')
-    fig, dataframe_to_show = plot.piechart(dataframe)
-    st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+    with tab2:
+        fig, dataframe_to_show = plot.piechart(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
-    with st.expander('Daten'):
-        st.dataframe(dataframe_to_show)
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+
+    st.header('Merkmale und Bedingungen')
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(['Unfallkategorie',  'Unfallart', 'Unfalltyp', 'Lichtverhältnisse',
+                                     'Strassenzustand'])
+    with tab1:
+        fig, dataframe_to_show = plot.accidentKat(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    with tab2:
+        fig, dataframe_to_show = plot.accidentArt(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    with tab3:
+        fig, dataframe_to_show = plot.accidentType(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    with tab4:
+        fig, dataframe_to_show = plot.light_conditions(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
+    with tab5:
+        fig, dataframe_to_show = plot.street_conditions(dataframe)
+        st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
+
+        with st.expander('Daten'):
+            st.dataframe(dataframe_to_show)
+
 
     if selected_district == 'Alle Stadtteile':
         st.header('Unfälle in Stadtteilen')
@@ -452,9 +494,10 @@ def diagramme(dataframe):
         with st.expander('Daten'):
             st.dataframe(dataframe_to_show)
 
+    st.header('Unfälle nach Zeit')
     tab1, tab2, tab3 = st.tabs(['Monat', 'Woche', 'Stunde'])
     with tab1:
-        st.header('Unfälle nach Monat')
+        st.write('Unfälle nach Monat')
         fig, dataframe_to_show = plot.month(dataframe)
         st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
@@ -462,14 +505,14 @@ def diagramme(dataframe):
             st.dataframe(dataframe_to_show)
 
     with tab2:
-        st.header('Unfälle nach Wochentag')
+        st.write('Unfälle nach Wochentag')
         fig, dataframe_to_show = plot.week(dataframe)
         st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
         with st.expander('Daten'):
             st.dataframe(dataframe_to_show)
     with tab3:
-        st.header('Unfälle nach Stunde')
+        st.write('Unfälle nach Stunde')
         fig, dataframe_to_show = plot.hour(dataframe)
         st.plotly_chart(fig, theme='streamlit', use_container_width=True, config={'displaylogo': False})
 
