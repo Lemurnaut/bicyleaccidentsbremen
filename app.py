@@ -8,7 +8,7 @@ import doc as appdocumentation
 
 
 # read csv create a dataframe and drop one unused column
-url = 'https://raw.githubusercontent.com/Lemurnaut/dibrut/main/data/unfalldaten_2016_2021_localized.csv'
+url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2021_localized.csv'
 
 data = pd.read_csv(url, sep=',', header=0, encoding='utf-8-sig')
 data = data.drop(columns={'Unnamed: 0'})
