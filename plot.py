@@ -193,7 +193,8 @@ def accidentKat(dataframe):
     dataframe = pd.DataFrame.from_dict(kat_data, orient='index')
     dataframe = dataframe.rename(columns={0 : 'Anzahl'})
 
-    fig = px.bar(dataframe, x=dataframe.index, y=dataframe[dataframe.columns[0]].values, text=dataframe[dataframe.columns[0]].values)
+    fig = px.bar(dataframe, x=dataframe[dataframe.columns[0]].values, y=dataframe.index,
+                 text=dataframe[dataframe.columns[0]].values)
 
     fig.update_layout(xaxis_title='Unfallbeteiligung',
                       yaxis_title='Anzahl',
@@ -307,10 +308,9 @@ def street_conditions(dataframe):
 def map(dataframe):
     '''
     '''
-
     highlight_list = ['Keine', 'Pkw', 'Fußgänger', 'Motorrad', 'Lkw', 'Sonstige']
 
-    to_highlight = st.selectbox('Unfallbeteiligung hervorheben', highlight_list)
+    to_highlight = st.radio('Unfallbeteiligung hervorheben', highlight_list, horizontal=True)
 
     highlight_dict = {'Keine' : 0,
                       'Pkw' : 'IstPKW',
@@ -323,7 +323,7 @@ def map(dataframe):
 
     colorcode_list = ['Kategorie', 'Art', 'Typ', 'Licht', 'Straßenzustand']
 
-    colorcode_selection = st.selectbox('Farbkodierung nach ...', colorcode_list)
+    colorcode_selection = st.radio('Farbkodierung nach ...', colorcode_list, horizontal=True)
 
     color_dict = {'Kategorie' : 'UKATEGORIE',
                   'Art' : 'UART',
@@ -334,7 +334,18 @@ def map(dataframe):
 
     colorcode = color_dict[colorcode_selection]
 
-    color_lookup = pydeck.data_utils.assign_random_colors(dataframe[colorcode])
+    color_lookup = {'1': [0, 0, 128, 255],
+                    '2': [0, 0, 205, 255],
+                    '3': [30,144,255, 255],
+                    '4': [75, 0, 130, 255],
+                    '5': [106, 90, 205, 255],
+                    '6': [147, 112, 219, 255],
+                    '7': [148, 0, 211, 255],
+                    '8': [0,206,209, 255],
+                    '9': [199, 21, 133, 255],
+                    '0': [255, 0, 255, 255]
+                    }
+
     dataframe['color'] = dataframe.apply(lambda row: color_lookup.get(str(row[colorcode])), axis=1)
 
     kat_dict = {1: 'Unfall mit Getöteten',

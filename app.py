@@ -5,6 +5,8 @@ import plot
 import doc as appdocumentation
 
 
+
+
 # read csv create a dataframe and drop one unused column
 url = 'https://raw.githubusercontent.com/Lemurnaut/dibrut/main/data/unfalldaten_2016_2021_localized.csv'
 
@@ -352,7 +354,10 @@ def select_district(dataframe, selected_city, selected_district):
 
 def select_local_district(dataframe, selected_local_district):
     '''
-
+    - function  to select one local district
+    - creates a dropdown to select local district
+    - takes dataframe
+    - returns filtered dataframe
     '''
 
     if selected_local_district != 'Alle Ortsteile':
@@ -386,6 +391,11 @@ def get_dataframe(dataframe):
 
 
 def maps(dataframe):
+    '''
+
+    :param dataframe: pandas.DataFrame
+    :return: plotly.express figure
+    '''
     dataframe = get_dataframe(dataframe)
     fig = plot.map(dataframe)
     st.pydeck_chart(fig, use_container_width=True)
