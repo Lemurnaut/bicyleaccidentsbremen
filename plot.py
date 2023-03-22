@@ -454,9 +454,10 @@ def map(dataframe):
         layers=[column_layer, scatterplot_layer],
         initial_view_state=view,
         tooltip=tooltip,
-        map_provider='mapbox',
-        map_style='mapbox://styles/mapbox/light-v11',
-        api_keys={'mapbox': st.secrets['MAPBOX_KEY']},
+        map_style='light'
+        #map_provider='mapbox',
+        #map_style='mapbox://styles/mapbox/light-v11',
+        #api_keys={'mapbox': st.secrets['MAPBOX_KEY']},
         #map_style='mapbox://styles/mapbox/navigation-night-v1',
     )
 
