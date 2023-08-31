@@ -4,18 +4,18 @@ import pandas as pd
 import plot
 import doc as appdocumentation
 
+@st.cache_data
+def download_data():
+    # read csv create a dataframe and drop one unused column
+    url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2022_localized.csv'
 
-
-
-# read csv create a dataframe and drop one unused column
-url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2021_localized.csv'
-
-data = pd.read_csv(url, sep=',', header=0, encoding='utf-8-sig')
-data = data.drop(columns={'Unnamed: 0'})
+    data = pd.read_csv(url, sep=',', header=0, encoding='utf-8-sig')
+    #data = data.drop(columns={'Unnamed: 0'})
+    return data
 
 
 def sidebar_year_range_slider():
-    year_list = ['2016', '2017', '2018', '2019', '2020', '2021']
+    year_list = ['2016', '2017', '2018', '2019', '2020', '2021', '2022']
     start_year, end_year = st.sidebar.select_slider('Jahr', year_list, value=(year_list[0], year_list[-1]))
     return start_year, end_year
 
@@ -553,6 +553,8 @@ st.set_page_config(layout="wide",
 st.header('Fahrradunfälle in Bremen')
 
 col1, col2, col3 = st.columns(3)
+
+data = download_data()
 
 dataframe, selected_city = dropdown_city(data)
 
