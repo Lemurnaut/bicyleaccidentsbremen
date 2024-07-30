@@ -154,11 +154,11 @@ def years(dataframe, start_year, end_year):
     - filter dataframe column 'UJAHR' by input value
     - returns filtered dataframe
     '''
-    year_list = dataframe['UJAHR'].unique().astype(str).tolist()
+    #year_list = dataframe['UJAHR'].unique().astype(str).tolist()
+    year_list = dataframe['UJAHR'].unique().tolist()
 
-    #selected_years = list(map(int, year_list[year_list.index(start_year):year_list.index(end_year) + 1]))
-    selected_years = list(map(int, year_list[year_list.index(int(start_year)):year_list.index(int(end_year)) + 1]))
-
+    selected_years = list(map(int, year_list[year_list.index(start_year):year_list.index(end_year) + 1]))
+    
     dataframe = dataframe[dataframe['UJAHR'].isin(selected_years)]
 
     return dataframe
