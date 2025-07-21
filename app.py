@@ -7,7 +7,7 @@ import doc as appdocumentation
 @st.cache_data
 def download_data():
     # read csv create a dataframe and drop one unused column
-    url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2023_localized.csv'
+    url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2024_localized.csv'
 
     data = pd.read_csv(url, sep=',', header=0, encoding='utf-8-sig')
     #data = data.drop(columns={'Unnamed: 0'})
