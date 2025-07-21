@@ -8,7 +8,7 @@ info = 'Es werden ausschließlich Unfälle mit Fahrradbeteiligung angezeigt (Ist
        'Sie werden in der Ortsteilliste unter *Unbekannt* geführt.'
 
 dataproc = 'Notwendige und durchgeführte Datenvorverarbeitung zur Darstellung in dieser App:  ' \
-           'Zusammenfassen der einzelnen csv Dateien (2016-2021) aus der Datenquelle. Filtern der Unfälle' \
+           'Zusammenfassen der einzelnen csv Dateien (2016-202x) aus der Datenquelle. Filtern der Unfälle' \
            ' nach Bundesland Bremen (ULAND = 4) und ' \
            'ausschließlich Unfällen mit Fahrradbeteiligung (IstRad = 1). Vereinheitlichung von Spaltennamen. ' \
            'Aufarbeitung der Geodaten (Punkt statt Komma, einzelne Spalten für Breiten- und Längengrade). ' \
