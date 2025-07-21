@@ -15,7 +15,7 @@ def download_data():
 
 
 def sidebar_year_range_slider():
-    year_list = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023']
+    year_list = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']
     start_year, end_year = st.sidebar.select_slider('Jahr', year_list, value=(year_list[0], year_list[-1]))
     return start_year, end_year
 
