@@ -306,7 +306,7 @@ def street_conditions(dataframe):
                      )
     return fig, dataframe
 
-
+@st.cache_data
 def get_bikeroutes():
     url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/HB_Hauptrouten.geojson'
     dataframe = geopandas.read_file(url)
@@ -314,7 +314,7 @@ def get_bikeroutes():
     dataframe['coords'] = dataframe.geometry.apply(lambda geom: list(geom.coords))
     return dataframe
 
-
+@st.cache_data
 def get_kitas():
     url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/kitas_bre.geojson'
     dataframe = geopandas.read_file(url)
@@ -324,7 +324,7 @@ def get_kitas():
     dataframe['lon'] = dataframe['geometry'].x
     return dataframe
 
-
+@st.cache_data
 def get_schools():
     url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/schools_bre.geojson'
     dataframe = geopandas.read_file(url)
