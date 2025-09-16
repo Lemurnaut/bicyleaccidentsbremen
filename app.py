@@ -10,7 +10,7 @@ def download_data():
     url = 'https://raw.githubusercontent.com/Lemurnaut/BicyleAccidentsBremen/main/data/unfalldaten_2016_2024_localized.csv'
 
     data = pd.read_csv(url, sep=',', header=0, encoding='utf-8-sig')
-    #data = data.drop(columns={'Unnamed: 0'})
+    data = data.drop(columns={'Unnamed: 0'})
     return data
 
 
@@ -575,3 +575,4 @@ selected_district = dropdown_district(dataframe)
 selected_local_district = dropdown_local_district(dataframe, selected_district)
 
 select_analysis_type()
+
