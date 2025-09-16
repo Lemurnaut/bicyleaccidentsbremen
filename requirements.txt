@@ -1,6 +1,8 @@
+python==3.11.9
 streamlit==1.32.0
 pandas==2.2.2
 geopandas==0.14.2
 plotly==5.22.0
 pydeck==0.8.0
+
 
