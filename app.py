@@ -404,8 +404,10 @@ def maps(dataframe):
     with st.expander('Daten'):
         st.dataframe(dataframe)
 
-    st.write('Datenquelle: https://unfallatlas.statistikportal.de/_opendata2022.html, '
-             'Lizenz: dl-de/by-2-0 | www.govdata.de/dl-de/by-2-0')
+    st.markdown('Quellen')
+    st.markdown('Unfälle: [Unfallatlas](https://unfallatlas.statistikportal.de/_opendata2022.html), '
+             'Lizenz: [dl-de/by-2-0](www.govdata.de/dl-de/by-2-0)')
+    st.markdown('Hauptrouten, Kitas, Schulen: [OpenStreetMap](https://openstreetmap.org) Lizenz: [ODbL](https://opendatacommons.org/licenses/odbl/)')
 
 
 def select_analysis_type():
