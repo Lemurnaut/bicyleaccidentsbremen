@@ -530,9 +530,10 @@ def diagramme(dataframe):
 
         with st.expander('Daten'):
             st.dataframe(dataframe_to_show)
-
-    st.write('Datenquelle: https://unfallatlas.statistikportal.de/_opendata2022.html, '
-             'Lizenz: dl-de/by-2-0 | www.govdata.de/dl-de/by-2-0')
+    st.markdown('Quellen')
+    st.markdown('Unfälle: [Unfallatlas](https://unfallatlas.statistikportal.de/_opendata2022.html), '
+             '[Lizenz: dl-de/by-2-0](www.govdata.de/dl-de/by-2-0)')
+    st.markdown('Kitas, Schulen: Freie Hansestadt Bremen, Bildungsbehörde, 2023 (CC-BY) via [Geoportal Bremen](https://geoportal.bremen.de/geoportal)')
 
 # 'main'
 
@@ -575,4 +576,5 @@ selected_district = dropdown_district(dataframe)
 selected_local_district = dropdown_local_district(dataframe, selected_district)
 
 select_analysis_type()
+
 
